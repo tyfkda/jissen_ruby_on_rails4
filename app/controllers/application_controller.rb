@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   layout :set_layout
 
+  rescue_from ActiveRecord::RecordNotFound, with: :rescue404
+
   private
   def set_layout
     if params[:controller].match(%r{\A(staff|admin|customer)/})
@@ -12,5 +14,10 @@ class ApplicationController < ActionController::Base
     else
       'customer'
     end
+  end
+
+  def rescue404(e)
+    @exception = e
+    render template: 'errors/not_found', status: 404
   end
 end
