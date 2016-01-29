@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   layout :set_layout
 
-  rescue_from ActiveRecord::RecordNotFound, with: :rescue404
+  rescue_from Exception, with: :rescue500
 
   private
   def set_layout
@@ -16,8 +16,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def rescue404(e)
+  def rescue500(e)
     @exception = e
-    render template: 'errors/not_found', status: 404
+    render 'errors/internal_server_error', status: 500
   end
 end
