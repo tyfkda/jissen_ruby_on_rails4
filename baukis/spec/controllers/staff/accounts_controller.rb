@@ -8,6 +8,7 @@ describe Staff::AccountsController do
 
     before do
       session[:staff_member_id] = staff_member.id
+      session[:last_access_time] = 1.second.ago
     end
 
     example 'email属性を変更する' do
