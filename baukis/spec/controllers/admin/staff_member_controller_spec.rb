@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 require 'rails_helper'
 
+describe Admin::StaffMembersController, 'ログイン前' do
+  it_behaves_like 'a protected admin controller'
+end
+
 describe Admin::StaffMembersController do
   let(:params_hash) { attributes_for(:staff_member) }
   let(:administrator) { create(:administrator) }
