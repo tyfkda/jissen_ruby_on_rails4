@@ -25,7 +25,7 @@ class Staff::Base < ApplicationController
     if current_staff_member && !current_staff_member.active?
       session.delete(:staff_member_id)
       flash.alert = 'アカウントが無効になりました。'
-      redirct_to :staff_root
+      redirect_to :staff_root
     end
   end
 
@@ -38,7 +38,7 @@ class Staff::Base < ApplicationController
       else
         session.delete(:staff_member_id)
         flash.alert = 'セッションがタイムアウトしました。'
-        redirct_to :staff_login
+        redirect_to :staff_login
       end
     end
   end
