@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 class Admin::SessionsController < Admin::Base
+  skip_before_action :authorize
+
   def new
     if current_administrator
       redirect_to :admin_root
