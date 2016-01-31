@@ -19,6 +19,7 @@ class Staff::SessionsController < Staff::Base
     case Staff::Authenticator.new(staff_member).authenticate(@form.password)
     when true
       session[:staff_member_id] = staff_member.id
+      session[:last_access_time] = Time.current
       flash.notice = 'ログインしました。'
       redirect_to :staff_root
     when :suspended
