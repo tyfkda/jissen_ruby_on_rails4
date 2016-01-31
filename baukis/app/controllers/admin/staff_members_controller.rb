@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class Admin::StaffMembersController < Admin::Base
   def index
     @staff_members = StaffMember.order(:family_name_kana, :given_name_kana)
@@ -5,6 +6,16 @@ class Admin::StaffMembersController < Admin::Base
 
   def new
     @staff_member = StaffMember.new
+  end
+
+  def create
+    @staff_member = StaffMember.new(params[:staff_member])
+    if @staff_member.save
+      flash.notice = '職員アカウントを新規登録しました。'
+      redirect_to :admin_staff_members
+    else
+      render action: 'new'
+    end
   end
 
   def show
