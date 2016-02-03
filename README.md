@@ -14,3 +14,9 @@
 * ホストOSのブラウザから http://localhost:4000/ で見れる
 * ホスト名：Macの場合、 `/private/etc/hosts` をいじって、
   http://example.com:4000 , http://baukis.example.com:4000 などでもアクセスできるようにする。
+
+
+### パスワード
+
+* 職員： taro / password （他もすべて同じパスワード）
+* 管理者： hanako / foobar
