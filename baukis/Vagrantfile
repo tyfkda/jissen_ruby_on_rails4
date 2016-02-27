@@ -9,6 +9,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision :shell, inline: "yum -y update"
   config.vm.provision :shell, inline: "yum -y install wget"
+  config.vm.provision :shell, inline: "yum -y install emacs"
 
   config.vm.provision :shell, path: "provision/chruby.sh"
   config.vm.provision :shell, path: "provision/ruby-install.sh"
