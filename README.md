@@ -16,6 +16,12 @@
   http://example.com:4000 , http://baukis.example.com:4000 などでもアクセスできるようにする。
 
 
+#### DBのリセット
+
+```sh
+$ bin/rake db:reset
+```
+
 ### パスワード
 
 * 職員： taro / password （他もすべて同じパスワード）
