@@ -24,7 +24,7 @@ feature '職員による顧客電話番号管理' do
     expect(customer.personal_phones[0].number).to eq('090-9999-9999')
   end
 
-  scenario '職員が顧客の自宅番号を追加する' do
+  scenario '職員が顧客の自宅電話番号を追加する' do
     click_link '顧客管理'
     first('table.listing').click_link '編集'
 
@@ -35,5 +35,18 @@ feature '職員による顧客電話番号管理' do
     customer.reload
     expect(customer.home_address.phones.size).to eq(1)
     expect(customer.home_address.phones[0].number).to eq('03-9999-9999')
+  end
+
+  scenario '職員が顧客の勤務先電話番号を追加する' do
+    click_link '顧客管理'
+    first('table.listing').click_link '編集'
+
+    fill_in 'form_work_address_phones_0_number', with: '03-1234-5678'
+    check 'form_home_address_phones_0_primary'
+    click_button '更新'
+
+    customer.reload
+    expect(customer.work_address.phones.size).to eq(1)
+    expect(customer.work_address.phones[0].number).to eq('03-1234-5678')
   end
 end
